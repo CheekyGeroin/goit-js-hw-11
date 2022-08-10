@@ -21,6 +21,7 @@ function onSearchImages(e) {
 }
 
 function createMarkup(imagesArr) {
+  console.log(imagesArr);
   return {
     markup: imagesArr.map(
       image => `<div class="photo-card">
