@@ -22,10 +22,39 @@ function onSearchImages(e) {
 
 function createMarkup(imagesArr) {
   console.log(imagesArr);
-  return {
-    markup: imagesArr.map(
-      image => `<div class="photo-card">
-  <img src="${image}" alt="" loading="lazy" />
+  Notify.info(`Hooray! We found ${imagesArr.data.totalHits} images.`);
+  for (let i = 0; i < imagesArr.length; i += 1) {
+    return `<a class='big__image' href='${i.largeImageURL}'>
+    <div class="photo-card">
+      <img src="${i.pageURL}" alt="${i.tags}" loading="lazy" />
+      <div class="info">
+    <p class="info-item">
+      <b>Likes ${i.likes}</b>
+    </p>
+    <p class="info-item">
+      <b>Views ${i.views}</b>
+    </p>
+    <p class="info-item">
+      <b>Comments ${i.comments}</b>
+    </p>
+    <p class="info-item">
+      <b>Downloads ${i.downloads}</b>
+    </p>
+  </div>;
+</div>;
+</a>`;
+  }
+}
+
+function errorHandler(error) {
+  if (error === 'not found') {
+    Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
+  }
+}
+<div class="photo-card">
+  <img src="" alt="" loading="lazy" />
   <div class="info">
     <p class="info-item">
       <b>Likes</b>
@@ -40,15 +69,4 @@ function createMarkup(imagesArr) {
       <b>Downloads</b>
     </p>
   </div>
-</div>`
-    ),
-  };
-}
-
-function errorHandler(error) {
-  if (error === 'not found') {
-    Notify.failure(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
-  }
-}
+</div>;
