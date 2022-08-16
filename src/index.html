@@ -13,7 +13,74 @@
     </form>
 
     <div class="gallery">
+      <button class="load-more">load-more</button>
     </div>
     <script src="index.js" type="module"></script>
   </body>
 </html>
+
+<!-- import './css/styles.css';
+import { Notify } from 'notiflix';
+import { fetchImages } from './fetchImages';
+
+const refs = {
+searchBar: document.querySelector("[name='searchQuery']"),
+form: document.querySelector('.search-form'),
+gallery: document.querySelector(".gallery")
+};
+
+refs.form.addEventListener('submit', onSearchImages);
+
+function onSearchImages(e) {
+e.preventDefault();
+
+const searchItem = refs.searchBar.value;
+clearResult()
+fetchImages(searchItem)
+.then(createMarkup)
+.then(addMarkup)
+.catch(errorHandler);
+}
+
+function createMarkup(imagesArr) {
+console.log(imagesArr);
+const path = imagesArr.data.hits
+Notify.info(`Hooray! We found ${imagesArr.data.totalHits} images.`);
+return {
+markup: path.map(image => `<a class='big__image' href='${image.largeImageURL}'>
+  <div class="photo-card">
+    <img src="${image.pageURL}" alt="${image.tags}" loading="lazy" />
+    <div class="info">
+      <p class="info-item">
+        <b>Likes ${image.likes}</b>
+      </p>
+      <p class="info-item">
+        <b>Views ${image.views}</b>
+      </p>
+      <p class="info-item">
+        <b>Comments ${image.comments}</b>
+      </p>
+      <p class="info-item">
+        <b>Downloads ${image.downloads}</b>
+      </p>
+    </div>
+  </div>
+</a>`).join("")
+}
+}
+
+
+function addMarkup(finishedMarkup) {
+refs.gallery.insertAdjacentHTML('beforeend', finishedMarkup.markup)
+}
+function errorHandler(error) {
+if (error === 'not found') {
+Notify.failure(
+'Sorry, there are no images matching your search query. Please try again.'
+);
+}
+}
+
+function clearResult() {
+refs.gallery.innerHTML = " ";
+} -->

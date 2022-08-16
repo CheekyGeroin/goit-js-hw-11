@@ -35,3 +35,20 @@ img {
 ul {
   list-style: none;
 }
+.gallery{
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.photo-card{
+  margin: 20px;
+}
+.gallery__image{
+  width: 300px;
+}
+.info{
+  display: flex;
+}
+.info-item{
+  margin-right: 20px;
+}
